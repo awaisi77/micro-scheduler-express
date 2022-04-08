@@ -1,0 +1,23 @@
+{
+  "local-dev": {
+    "username": "root",
+    "password": "awais",
+    "database": "micro-scheduler",
+    "host": "localhost",
+    "dialect": "mysql",
+    "port": 3306,
+    "BaseURL_LoggerAdapterAPI": "http://localhost:3002/api/v1"
+  },
+  "docker-dev": {
+    "username": "root",
+    "password": "awais",
+    "database": "micro-scheduler",
+    "host": "db",
+    "dialect": "mysql",
+    "port": 3306,
+    "BaseURL_LoggerAdapterAPI": "http://host.docker.internal:3002/api/v1"
+  },
+  "jwt-secret": "oboijasonwebtokkensecret",
+  "service_name": "core-scheduler",
+  "schedulerTime": "*/10 * * * * *"
+}

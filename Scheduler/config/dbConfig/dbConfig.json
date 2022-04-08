@@ -1,0 +1,18 @@
+{
+  "local-dev": {
+    "username": "root",
+    "password": "awais",
+    "database": "micro-scheduler",
+    "host": "localhost",
+    "dialect": "mysql",
+    "port": 3306
+  },
+  "docker-dev": {
+    "username": "root",
+    "password": "awais",
+    "database": "micro-scheduler",
+    "host": "db",
+    "dialect": "mysql",
+    "port": 3306
+  }
+}

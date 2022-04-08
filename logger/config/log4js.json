@@ -1,0 +1,78 @@
+{
+  "appenders": {
+    "files": {
+      "type": "dateFile",
+      "filename": "./logs/Logs.log",
+      "pattern": ".yyyy-MM-dd",
+      "maxLogSize": 10485760,
+      "backups": 20,
+      "layout": {
+        "type": "pattern",
+        "pattern": "[%d] [%p] [%X{traceid}]%m"
+      },
+      "compress": true,
+      "keepFileExt": true,
+      "alwaysIncludePattern": true,
+      "daysToKeep":30
+    },
+    "aws": {
+      "type": "log4js-cloudwatch-appender",
+      "accessKeyId": "AKIARPGV3MZURAMVYNYG",
+      "secretAccessKey": "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",
+      "region": "us-east-2",
+      "logGroup": "Logs",
+      "logStream": "LogStream",
+      "layout": {
+        "type": "pattern",
+        "pattern": "[%d] [%p] [%X{traceid}]%m%n"
+      }
+    },
+    "email": {
+      "type": "@log4js-node/smtp",
+      "layout": {
+        "type": "pattern",
+        "pattern": "[%d] [%p] [%X{traceid}]%m%n"
+      },
+      "transport": {
+        "plugin": "smtp",
+        "options": {
+          "host": "smtp.gmail.com",
+          "port": 587,
+          "auth": {
+            "user": "awais@gmail.com",
+            "pass": "1234"
+          }
+        }
+      },
+      "recipients": "awais@gmail.com",
+      "subject": "Error during processing message.",
+      "sender": "awais@gmail.com"
+    },
+    "out": {
+      "type": "stdout"
+    },
+    "fileFilter": {
+      "type": "logLevelFilter",
+      "appender": "files",
+      "level": "TRACE"
+    },
+    "awsFilter": {
+      "type": "logLevelFilter",
+      "appender": "aws",
+      "level": "TRACE",
+      "maxLevel": "WARN"
+    },
+    "emailFilter": {
+      "type": "logLevelFilter",
+      "appender": "email",
+      "level": "ERROR",
+      "maxLevel": "ERROR"
+    }
+  },
+  "categories": {
+    "default": {
+      "appenders": ["fileFilter", "out"],
+      "level": "trace"
+    }
+  }
+}
